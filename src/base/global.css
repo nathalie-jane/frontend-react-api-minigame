@@ -1,0 +1,56 @@
+/* ===================================
+    GLOBAL
+    
+	Base page layout and reset styles
+====================================== */
+
+/* Box sizing reset */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* Base page styles */
+body {
+	min-height: 100vh;
+	background: linear-gradient(to bottom right, #eff6ff 50%, #e0e7ff 100%);
+	font-family: "Open Sans", sans-serif;
+	color: #172554;
+}
+
+/* Remove default spacing */
+h1,
+h2,
+p,
+ul,
+li {
+	margin: 0;
+	padding: 0;
+}
+
+/* Remove default list bullets */
+ul {
+	list-style-type: none;
+}
+
+/* Make images responsive by default */
+img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+/* Show pointer cursor on clickable buttons */
+button {
+	font: inherit;
+	border: none;
+	cursor: pointer;
+}
+
+/* Main content area */
+.site-main {
+	min-height: 100vh;
+	width: 100%;
+	padding: 16px;
+}

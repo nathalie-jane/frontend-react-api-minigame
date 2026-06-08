@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { fetchCountriesData } from "../../services/countriesApi";
-import "./GuessFlagGame.css";
+import "./FlagQuizGame.css";
 
-function GuessFlagGame() {
+function FlagQuizGame() {
 	const [countries, setCountries] = useState([]);
 	const [error, setError] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
@@ -32,4 +32,4 @@ function GuessFlagGame() {
 	return null;
 }
 
-export default GuessFlagGame;
+export default FlagQuizGame;

@@ -1,10 +1,10 @@
-import GuessFlagGame from "./components/GueesFlagGame/GuessFlagGame";
+import StartScreen from "./components/StartScreen/StartScreen";
 
 function App() {
 	return (
-		<>
-			<GuessFlagGame />
-		</>
+		<main className="site-main">
+			<StartScreen />
+		</main>
 	);
 }
 
