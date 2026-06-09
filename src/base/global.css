@@ -52,5 +52,12 @@ button {
 .site-main {
 	min-height: 100vh;
 	width: 100%;
-	padding: 16px;
+	padding-inline: 16px;
+}
+
+/* Responsive adjustments for tablet and larger screens */
+@media screen and (min-width: 48rem) {
+	.site-main {
+		padding-inline: 32px;
+	}
 }
