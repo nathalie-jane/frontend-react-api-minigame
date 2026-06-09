@@ -9,21 +9,55 @@ import { useEffect, useState } from "react";
 import { fetchCountriesData } from "../../services/countriesApi";
 import "./FlagQuizGame.css";
 
+const getShuffledCountries = (countries) => {
+	const shuffledCountries = [...countries];
+
+	for (let i = shuffledCountries.length - 1; i > 0; i--) {
+		const randomCountryIndex = Math.floor(Math.random() * (i + 1));
+
+		[shuffledCountries[i], shuffledCountries[randomCountryIndex]] = [
+			shuffledCountries[randomCountryIndex],
+			shuffledCountries[i],
+		];
+	}
+
+	return shuffledCountries;
+};
+
 function FlagQuizGame() {
-	const [countries, setCountries] = useState([]);
 	const [error, setError] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
+	const [currentCountryFlag, setCurrentCountryFlag] = useState(null);
+	const [answerOptions, setAnswerOptions] = useState([]);
 
 	useEffect(() => {
 		async function getCountries() {
 			try {
 				const data = await fetchCountriesData();
+				const randomCountryIndex = Math.floor(Math.random() * data.length);
+				const correctCountry = data[randomCountryIndex];
 
-				setCountries(data);
+				const filteredCountries = data.filter((country) => {
+					if (country.name.common !== correctCountry.name.common) {
+						return true;
+					} else {
+						return false;
+					}
+				});
+
+				const incorrectCountries = getShuffledCountries(filteredCountries).slice(0, 3);
+
+				const countryAnswerOptions = [
+					correctCountry.name.common,
+					...incorrectCountries.map((country) => country.name.common),
+				];
+
+				setCurrentCountryFlag(correctCountry);
+				setAnswerOptions(getShuffledCountries(countryAnswerOptions));
 				setError(null);
 			} catch (error) {
 				setError(error.message);
-				setCountries([]);
+				setCurrentCountryFlag(null);
 			} finally {
 				setIsLoading(false);
 			}
@@ -34,7 +68,6 @@ function FlagQuizGame() {
 
 	console.log("Loading:", isLoading);
 	console.log("Error:", error);
-	console.log("Countries loaded:", countries.length);
 
 	return (
 		<section className="flag-quiz">
@@ -73,36 +106,27 @@ function FlagQuizGame() {
 				<div className="flag-quiz__content">
 					<h1 className="flag-quiz__question">Which country does this flag belong to?</h1>
 					<div className="flag-quiz__flag">
-						<img className="flag-quiz__flag-image" src="" alt="Flag to guess"></img>
+						{currentCountryFlag && (
+							<img className="flag-quiz__flag-image" src={currentCountryFlag.flags.svg} alt="Flag to guess"></img>
+						)}
 					</div>
 				</div>
 
 				{/* Answer options */}
 				<fieldset className="flag-quiz__options">
-					{/* Individual answer option */}
-					<label className="flag-quiz__option" htmlFor="country-option-01">
-						<input className="flag-quiz__option-input" type="radio" id="country-option-01" name="country"></input>
-						<span className="flag-quiz__option-country"></span>
-						<span className="flag-quiz__icon"></span>
-					</label>
-					{/* Individual answer option */}
-					<label className="flag-quiz__option" htmlFor="country-option-02">
-						<input className="flag-quiz__option-input" type="radio" id="country-option-02" name="country"></input>
-						<span className="flag-quiz__option-country"></span>
-						<span className="flag-quiz__icon"></span>
-					</label>
-					{/* Individual answer option */}
-					<label className="flag-quiz__option" htmlFor="country-option-03">
-						<input className="flag-quiz__option-input" type="radio" id="country-option-03" name="country"></input>
-						<span className="flag-quiz__option-country"></span>
-						<span className="flag-quiz__icon"></span>
-					</label>
-					{/* Individual answer option */}
-					<label className="flag-quiz__option" htmlFor="country-option-04">
-						<input className="flag-quiz__option-input" type="radio" id="country-option-04" name="country"></input>
-						<span className="flag-quiz__option-country"></span>
-						<span className="flag-quiz__icon"></span>
-					</label>
+					{answerOptions.map((countryName, index) => (
+						<label className="flag-quiz__option" htmlFor={`country-option-${index}`} key={countryName}>
+							<input
+								className="flag-quiz__option-input"
+								type="radio"
+								id={`country-option-${index}`}
+								name="country"
+								value={countryName}
+							/>
+							<span className="flag-quiz__option-country">{countryName}</span>
+							<span className="flag-quiz__icon"></span>
+						</label>
+					))}
 				</fieldset>
 
 				{/* Feedback and action button */}
