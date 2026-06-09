@@ -1,9 +1,9 @@
-import StartScreen from "./components/StartScreen/StartScreen";
+import FlagQuizGame from "./components/FlagQuizGame/FlagQuizGame";
 
 function App() {
 	return (
 		<main className="site-main">
-			<StartScreen />
+			<FlagQuizGame />
 		</main>
 	);
 }

@@ -1,12 +1,12 @@
 /* ==================================
-    COMPONENT: START SCREEN
+    COMPONENT: START GAME
 
-    Layout and styles for the start
+    Layout and styles for startup
     screen of the flag quiz game
 ===================================== */
 
 /* Main layout */
-.start-screen {
+.start-game {
 	min-height: 100vh;
 	display: flex;
 	justify-content: center;
@@ -14,7 +14,7 @@
 }
 
 /* Main card container */
-.start-screen__card {
+.start-game__card {
 	width: 100%;
 	max-width: 28rem;
 	margin: 0 auto;
@@ -22,15 +22,15 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	text-align: center;
 	background-color: #ffffff;
 	border-radius: 16px;
 	box-shadow: 0 25px 50px -12px rgba(30, 41, 59, 0.16);
 	padding: 16px;
-	text-align: center;
 }
 
 /* Globe icon */
-.start-screen__icon--globe {
+.start-game__icon--globe {
 	width: 2.5rem;
 	height: 2.5rem;
 	align-self: center;
@@ -41,13 +41,13 @@
 }
 
 /* Heading container */
-.start-screen__heading {
+.start-game__heading {
 	margin-bottom: 16px;
 	line-height: 1.4;
 }
 
 /* Heading title */
-.start-screen__heading-title {
+.start-game__heading-title {
 	margin-bottom: 4px;
 	padding-inline: 8px;
 	overflow-wrap: break-word;
@@ -58,7 +58,7 @@
 }
 
 /* Heading subtitle */
-.start-screen__heading-subtitle {
+.start-game__heading-subtitle {
 	color: #4a5565;
 	font-size: clamp(0.875rem, 0.786rem + 0.446vw, 1rem);
 	font-weight: 400;
@@ -66,7 +66,7 @@
 }
 
 /* Rules container */
-.start-screen__rules {
+.start-game__rules {
 	width: 100%;
 	max-width: 20rem;
 	margin-bottom: 16px;
@@ -76,7 +76,7 @@
 }
 
 /* Rules title */
-.start-screen__rules-title {
+.start-game__rules-title {
 	margin-bottom: 12px;
 	color: #1e2939;
 	font-size: clamp(1rem, 0.911rem + 0.446vw, 1.125rem);
@@ -86,7 +86,7 @@
 }
 
 /* Rules list */
-.start-screen__rules-list {
+.start-game__rules-list {
 	color: #364153;
 	font-size: clamp(0.75rem, 0.661rem + 0.446vw, 0.875rem);
 	line-height: 1.4;
@@ -95,7 +95,7 @@
 }
 
 /* Rules list item */
-.start-screen__rules-item {
+.start-game__rules-item {
 	display: flex;
 	align-items: flex-start;
 	gap: 6px;
@@ -103,13 +103,13 @@
 }
 
 /* Rules bullet icon */
-.start-screen__rules-icon {
+.start-game__rules-icon {
 	display: inline-flex;
 	color: #4f39f6;
 }
 
 /* Shared button styles */
-.start-screen__button {
+.start-game__button {
 	display: flex;
 	align-items: center;
 	font-weight: 600;
@@ -117,7 +117,7 @@
 }
 
 /* Play button */
-.start-screen__button--primary {
+.start-game__button--primary {
 	width: 100%;
 	max-width: 12rem;
 	justify-content: center;
@@ -132,13 +132,13 @@
 	line-height: 1.5;
 
 	transition:
-		background-color 0.2 ease,
-		color 0.2 ease;
+		background-color 0.2s ease,
+		color 0.2s ease;
 }
 
 /* Shared icon styles (play and exit) */
-.start-screen__icon--play,
-.start-screen__icon--exit {
+.start-game__icon--play,
+.start-game__icon--exit {
 	display: inline-flex;
 	align-items: center;
 	width: 1.5rem;
@@ -146,12 +146,12 @@
 }
 
 /* Play button icon */
-.start-screen__icon--play {
+.start-game__icon--play {
 	font-size: clamp(1.5rem, 1.411rem + 0.446vw, 1.625rem);
 }
 
 /* Exit button */
-.start-screen__button--secondary {
+.start-game__button--secondary {
 	margin-inline: auto;
 	gap: 4px;
 	background-color: transparent;
@@ -159,23 +159,23 @@
 	font-size: clamp(0.875rem, 0.83rem + 0.225vw, 0.938rem);
 	line-height: 1.4;
 
-	transition: color 0.2 ease;
+	transition: color 0.2s ease;
 }
 
 /* Exit button icon */
-.start-screen__icon--exit {
+.start-game__icon--exit {
 	font-size: clamp(1.375rem, 1.286rem + 0.446vw, 1.5rem);
 }
 
 /* Responsive adjustments for tablet and larger screens */
 @media screen and (min-width: 48rem) {
-	.start-screen__card {
+	.start-game__card {
 		max-width: 32rem;
 		padding-inline: 32px;
 		border-radius: 24px;
 	}
 
-	.start-screen__icon--globe {
+	.start-game__icon--globe {
 		width: 3.5rem;
 		height: 3.5rem;
 		margin-bottom: 16px;
@@ -183,80 +183,80 @@
 		line-height: 1;
 	}
 
-	.start-screen__heading {
+	.start-game__heading {
 		margin-bottom: 32px;
 	}
 
-	.start-screen__heading-title {
+	.start-game__heading-title {
 		margin-bottom: 8px;
 		font-size: 1.875rem;
 		line-height: 1.2;
 	}
 
-	.start-screen__heading-subtitle {
+	.start-game__heading-subtitle {
 		font-size: 1rem;
 		line-height: 1.5;
 	}
 
-	.start-screen__rules {
+	.start-game__rules {
 		max-width: 23rem;
 		margin-bottom: 32px;
 		padding: 24px;
 	}
 
-	.start-screen__rules-title {
+	.start-game__rules-title {
 		margin-bottom: 16px;
 		font-size: 1.125rem;
 		line-height: 1.6;
 	}
 
-	.start-screen__rules-list {
+	.start-game__rules-list {
 		font-size: 0.875rem;
 	}
 
-	.start-screen__rules-item {
+	.start-game__rules-item {
 		gap: 8px;
 		margin-bottom: 8px;
 	}
 
-	.start-screen__button--primary {
+	.start-game__button--primary {
 		gap: 12px;
 		margin-bottom: 20px;
 	}
 
-	.start-screen__icon--play,
-	.start-screen__icon--exit {
+	.start-game__icon--play,
+	.start-game__icon--exit {
 		width: 1.7rem;
 		height: 1.7rem;
 	}
 
-	.start-screen__icon--play {
+	.start-game__icon--play {
 		font-size: 1.625rem;
 	}
 
-	.start-screen__button--secondary {
+	.start-game__button--secondary {
 		font-size: 0.938rem;
 		line-height: 1.5;
 	}
 
-	.start-screen__icon--exit {
+	.start-game__icon--exit {
 		font-size: 1.5rem;
 	}
 }
 
 /* Responsive adjustments for desktop */
 @media screen and (min-width: 75rem) {
-	.start-screen__card {
+	.start-game__card {
 		padding-block: 32px;
 	}
 
 	/* Play button hover effect */
-	.start-screen__button--primary:hover {
+	.start-game__button--primary:hover {
 		background-color: #432dd7;
 	}
 
 	/* Exit button hover effect */
-	.start-screen__button--secondary:hover {
+	.start-game__button--secondary:hover {
 		color: #1e2939;
 	}
 }

@@ -1,0 +1,234 @@
+/* ==================================
+    COMPONENT: FLAG QUIZ GAME
+
+    Layout and styles for game
+    screen of the flag quiz game
+===================================== */
+
+/* Main layout */
+.flag-quiz {
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Quiz card container */
+.flag-quiz__card {
+	width: 100%;
+	max-width: 28rem;
+	margin: 0 auto;
+	overflow-x: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #ffffff;
+	border-radius: 16px;
+	box-shadow: 0 25px 50px -12px rgba(30, 41, 59, 0.16);
+	padding: 12px;
+}
+
+/* Header with stats and menu actions */
+.flag-quiz__header {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	gap: 8px;
+	margin-bottom: 16px;
+}
+
+/* Stats container */
+.flag-quiz__stats {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+/* Status badges for game round and score */
+.flag-quiz__status {
+	padding: 4px 8px;
+	border-radius: 999px;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	letter-spacing: 0.03rem;
+}
+
+/* Game round status badge */
+.flag-quiz__status--round {
+	background-color: #e0e7ff;
+	color: #432dd7;
+}
+
+/* Game score status badge */
+.flag-quiz__status--score {
+	background-color: #dcfce7;
+	color: #008236;
+}
+
+/* Menu actions container */
+.flag-quiz__menu-actions {
+	display: flex;
+	gap: 16px;
+}
+
+/* Menu buttons for restart and exit */
+.flag-quiz__menu-button {
+	width: 1.6rem;
+	height: 1.6rem;
+	padding: 4px;
+	background-color: transparent;
+}
+
+/* Restart button styles */
+.flag-quiz__menu-button--restart {
+	color: #4a5565;
+	transform: translateY(-4px);
+}
+
+/* Exit button styles */
+.flag-quiz__menu-button--exit {
+	transform: rotate(180deg);
+	color: #e7000b;
+}
+
+/* Shared icon styles */
+.flag-quiz__icon {
+	display: inline-flex;
+}
+
+/* Restart and exit icons */
+.flag-quiz__icon--restart,
+.flag-quiz__icon--exit {
+	font-size: 1.375rem;
+}
+
+/* Timer container */
+.flag-quiz__timer {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 12px;
+}
+
+/* Timer icon */
+.flag-quiz__icon--timer {
+	color: #fb2c36;
+	font-size: 1.375rem;
+}
+
+/* Progress bar container */
+.flag-quiz__progress {
+	width: 100%;
+	margin-bottom: 16px;
+}
+
+/* Progress bar track */
+.flag-quiz__progress-bar {
+	width: 100%;
+	height: 0.313rem;
+	overflow: hidden;
+	background-color: #ebe6e7;
+	border-radius: 999px;
+}
+
+/* Main content area with question and flag */
+.flag-quiz__content {
+	margin-bottom: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	text-align: center;
+}
+
+/* Quiz question text */
+.flag-quiz__question {
+	padding-inline: 8px;
+	color: #1e2939;
+	font-size: 0.875rem;
+	font-weight: 600;
+	line-height: 1.3;
+	letter-spacing: 0.04rem;
+}
+
+/* Flag image container */
+.flag-quiz__flag {
+	max-width: 100%;
+	display: inline-block;
+	position: relative;
+	border: 2px solid #ebe6e7;
+	border-radius: 14px;
+	box-shadow: 0 10px 15px -3px rgba(30, 41, 59, 0.16);
+}
+
+/* Flag image styles */
+.flag-quiz__flag-image {
+	object-fit: cover;
+}
+
+/* Answer options container */
+.flag-quiz__options {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 16px;
+	border: none;
+}
+
+/* Individual answer option */
+.flag-quiz__option {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 8px;
+	padding: 10px;
+	border: 2px solid #ebe6e7;
+	border-radius: 10px;
+}
+
+/* Last answer option */
+.flag-quiz__option:last-child {
+	margin-bottom: 0;
+}
+
+/* Feedback container for correct/incorrect answer and next button */
+.flag-quiz__feedback {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+/* Next question button */
+.flag-quiz__button {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	max-width: 12rem;
+	justify-content: center;
+	align-self: center;
+	gap: 8px;
+	padding-block: 12px;
+	border-radius: 14px;
+	background-color: #4f39f6;
+	color: #ffffff;
+	font-size: 1rem;
+	font-weight: 600;
+	line-height: 1.5;
+	letter-spacing: 0.04rem;
+
+	transition:
+		background-color 0.2s ease,
+		color 0.2s ease;
+}
+
+/* Next button icon */
+.flag-quiz__icon--next {
+	display: inline-flex;
+	align-items: center;
+	width: 1.5rem;
+	height: 1.5rem;
+	font-size: clamp(1.5rem, 1.411rem + 0.446vw, 1.625rem);
+}

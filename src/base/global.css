@@ -24,7 +24,8 @@ h1,
 h2,
 p,
 ul,
-li {
+li,
+fieldset {
 	margin: 0;
 	padding: 0;
 }
