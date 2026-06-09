@@ -29,6 +29,8 @@ function FlagQuizGame() {
 	const [isLoading, setIsLoading] = useState(true);
 	const [currentCountryFlag, setCurrentCountryFlag] = useState(null);
 	const [answerOptions, setAnswerOptions] = useState([]);
+	const [selectedAnswer, setSelectedAnswer] = useState(null);
+	const [isAnswerLocked, setIsAnswerLocked] = useState(false);
 
 	useEffect(() => {
 		async function getCountries() {
@@ -58,6 +60,10 @@ function FlagQuizGame() {
 			} catch (error) {
 				setError(error.message);
 				setCurrentCountryFlag(null);
+				setAnswerOptions([]);
+				setSelectedAnswer(null);
+
+				console.error("Error fetching countries data:", error);
 			} finally {
 				setIsLoading(false);
 			}
@@ -67,7 +73,14 @@ function FlagQuizGame() {
 	}, []);
 
 	console.log("Loading:", isLoading);
-	console.log("Error:", error);
+
+	const handleOptionSelect = (event) => {
+		setSelectedAnswer(event.target.value);
+		setIsAnswerLocked(true);
+	};
+
+	const correctAnswer = currentCountryFlag ? currentCountryFlag.name.common : "";
+	const isCorrectAnswer = selectedAnswer === correctAnswer;
 
 	return (
 		<section className="flag-quiz">
@@ -122,6 +135,9 @@ function FlagQuizGame() {
 								id={`country-option-${index}`}
 								name="country"
 								value={countryName}
+								checked={selectedAnswer === countryName}
+								onChange={handleOptionSelect}
+								disabled={isAnswerLocked}
 							/>
 							<span className="flag-quiz__option-country">{countryName}</span>
 							<span className="flag-quiz__icon"></span>
@@ -130,13 +146,20 @@ function FlagQuizGame() {
 				</fieldset>
 
 				{/* Feedback and action button */}
-				<div className="flag-quiz__feedback">
-					<p className="flag-quiz__feedback-text"></p>
-					<button className="flag-quiz__button" type="button">
-						Next Flag
-						<i className="flag-quiz__icon flag-quiz__icon--next lni lni-arrow-right"></i>
-					</button>
-				</div>
+				{selectedAnswer && (
+					<div className="flag-quiz__feedback">
+						<p
+							className={`flag-quiz__feedback-text ${
+								isCorrectAnswer ? "flag-quiz__feedback-text--correct" : "flag-quiz__feedback-text--incorrect"
+							}`}>
+							{isCorrectAnswer ? "Correct!" : `Wrong! The correct answer is ${correctAnswer}`}
+						</p>
+						<button className="flag-quiz__button" type="button">
+							Next Flag
+							<i className="flag-quiz__icon flag-quiz__icon--next lni lni-arrow-right"></i>
+						</button>
+					</div>
+				)}
 			</div>
 		</section>
 	);

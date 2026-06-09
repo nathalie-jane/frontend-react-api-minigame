@@ -184,7 +184,7 @@
 	align-items: center;
 	gap: 8px;
 	margin-bottom: 8px;
-	padding: 10px;
+	padding: 12px;
 	border: 2px solid #ebe6e7;
 	border-radius: 10px;
 }
@@ -192,6 +192,13 @@
 /* Last answer option */
 .flag-quiz__option:last-child {
 	margin-bottom: 0;
+}
+
+/* Radio button for answer option */
+.flag-quiz__option-input {
+	width: 1rem;
+	height: 1rem;
+	flex-shrink: 0;
 }
 
 /* Answer option text */
@@ -212,12 +219,36 @@
 	gap: 12px;
 }
 
+/* Feedback text for correct/incorrect answer */
+.flag-quiz__feedback-text {
+	padding: 12px 16px;
+	border-radius: 10px;
+	overflow-wrap: break-word;
+	text-align: center;
+	font-size: 0.75rem;
+	font-weight: 600;
+	line-height: 1.5;
+	letter-spacing: 0.04rem;
+}
+
+/* Feedback text styles for correct answer */
+.flag-quiz__feedback-text--correct {
+	background-color: #dcfce7;
+	color: #016630;
+}
+
+/* Feedback text styles for incorrect answer */
+.flag-quiz__feedback-text--incorrect {
+	background-color: #ffe2e2;
+	color: #9f0712;
+}
+
 /* Next question button */
 .flag-quiz__button {
 	display: flex;
 	align-items: center;
 	width: 100%;
-	max-width: 12rem;
+	max-width: 10rem;
 	justify-content: center;
 	align-self: center;
 	gap: 8px;
