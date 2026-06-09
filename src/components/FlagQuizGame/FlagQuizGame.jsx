@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { fetchCountriesData } from "../../services/countriesApi";
 import "./FlagQuizGame.css";
 
+// Returns a shuffled copy of provided countries
 const getShuffledCountries = (countries) => {
 	const shuffledCountries = [...countries];
 
@@ -74,13 +75,36 @@ function FlagQuizGame() {
 
 	console.log("Loading:", isLoading);
 
+	// Stores selected answer and locks the options
 	const handleOptionSelect = (event) => {
 		setSelectedAnswer(event.target.value);
 		setIsAnswerLocked(true);
 	};
 
+	// Gets correct country name for current question
 	const correctAnswer = currentCountryFlag ? currentCountryFlag.name.common : "";
+
+	// Checks if selected answer is correct
 	const isCorrectAnswer = selectedAnswer === correctAnswer;
+
+	// Creates option classes based on user selection
+	const getOptionClassName = (countryName) => {
+		let className = "flag-quiz__option";
+
+		if (isAnswerLocked && countryName === correctAnswer) {
+			className += " flag-quiz__option--correct";
+		}
+
+		if (isAnswerLocked && countryName === selectedAnswer && countryName !== correctAnswer) {
+			className += " flag-quiz__option--incorrect";
+		}
+
+		if (isAnswerLocked && countryName !== selectedAnswer && countryName !== correctAnswer) {
+			className += " flag-quiz__option--disabled";
+		}
+
+		return className;
+	};
 
 	return (
 		<section className="flag-quiz">
@@ -128,7 +152,7 @@ function FlagQuizGame() {
 				{/* Answer options */}
 				<fieldset className="flag-quiz__options">
 					{answerOptions.map((countryName, index) => (
-						<label className="flag-quiz__option" htmlFor={`country-option-${index}`} key={countryName}>
+						<label className={getOptionClassName(countryName)} htmlFor={`country-option-${index}`} key={countryName}>
 							<input
 								className="flag-quiz__option-input"
 								type="radio"

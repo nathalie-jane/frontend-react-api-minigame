@@ -194,6 +194,23 @@
 	margin-bottom: 0;
 }
 
+/* Styles for correct answer option */
+.flag-quiz__option--correct {
+	background-color: #f0fdf4;
+	border: 2px solid #00c951;
+}
+
+/* Styles for incorrect answer option */
+.flag-quiz__option--incorrect {
+	background-color: #fef2f2;
+	border: 2px solid #fb2c36;
+}
+
+/* Styles for disabled answer options */
+.flag-quiz__option--disabled {
+	opacity: 0.5;
+}
+
 /* Radio button for answer option */
 .flag-quiz__option-input {
 	width: 1rem;
