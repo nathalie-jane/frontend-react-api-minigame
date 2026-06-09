@@ -114,10 +114,6 @@
 	align-items: center;
 	font-weight: 600;
 	letter-spacing: 0.04rem;
-
-	transition:
-		background-color 0.2 ease,
-		color 0.2 ease;
 }
 
 /* Play button */
@@ -132,8 +128,12 @@
 	border-radius: 14px;
 	background-color: #4f39f6;
 	color: #ffffff;
-	font-size: clamp(1rem, 0.911rem + 0.446vw, 1.125rem);
+	font-size: 1rem;
 	line-height: 1.5;
+
+	transition:
+		background-color 0.2 ease,
+		color 0.2 ease;
 }
 
 /* Shared icon styles (play and exit) */
@@ -156,8 +156,10 @@
 	gap: 4px;
 	background-color: transparent;
 	color: #4a5565;
-	font-size: clamp(0.875rem, 0.786rem + 0.446vw, 1rem);
+	font-size: clamp(0.875rem, 0.83rem + 0.225vw, 0.938rem);
 	line-height: 1.4;
+
+	transition: color 0.2 ease;
 }
 
 /* Exit button icon */
@@ -220,9 +222,6 @@
 	.start-screen__button--primary {
 		gap: 12px;
 		margin-bottom: 20px;
-		padding-block: 14px;
-		font-size: 1.125rem;
-		line-height: 1.4;
 	}
 
 	.start-screen__icon--play,
@@ -236,7 +235,7 @@
 	}
 
 	.start-screen__button--secondary {
-		font-size: 1rem;
+		font-size: 0.938rem;
 		line-height: 1.5;
 	}
 
@@ -247,4 +246,17 @@
 
 /* Responsive adjustments for desktop */
 @media screen and (min-width: 75rem) {
+	.start-screen__card {
+		padding-block: 32px;
+	}
+
+	/* Play button hover effect */
+	.start-screen__button--primary:hover {
+		background-color: #432dd7;
+	}
+
+	/* Exit button hover effect */
+	.start-screen__button--secondary:hover {
+		color: #1e2939;
+	}
 }
