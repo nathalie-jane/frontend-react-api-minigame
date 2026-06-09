@@ -87,8 +87,8 @@ function FlagQuizGame() {
 	// Checks if selected answer is correct
 	const isCorrectAnswer = selectedAnswer === correctAnswer;
 
-	// Creates option classes based on user selection
-	const getOptionClassName = (countryName) => {
+	// Creates option states based on user selection
+	const renderOptionStates = (countryName) => {
 		let className = "flag-quiz__option";
 
 		if (isAnswerLocked && countryName === correctAnswer) {
@@ -101,6 +101,25 @@ function FlagQuizGame() {
 
 		if (isAnswerLocked && countryName !== selectedAnswer && countryName !== correctAnswer) {
 			className += " flag-quiz__option--disabled";
+		}
+
+		return className;
+	};
+
+	// Creates feedback icons based on user selection
+	const renderFeedbackIcon = (countryName) => {
+		let className = "flag-quiz__icon";
+
+		if (!isAnswerLocked) {
+			return null;
+		}
+
+		if (countryName === correctAnswer) {
+			className += " flag-quiz__icon--correct lni lni-check-circle-1";
+		}
+
+		if (countryName === selectedAnswer && countryName !== correctAnswer) {
+			className += " flag-quiz__icon--incorrect lni lni-xmark-circle";
 		}
 
 		return className;
@@ -152,7 +171,7 @@ function FlagQuizGame() {
 				{/* Answer options */}
 				<fieldset className="flag-quiz__options">
 					{answerOptions.map((countryName, index) => (
-						<label className={getOptionClassName(countryName)} htmlFor={`country-option-${index}`} key={countryName}>
+						<label className={renderOptionStates(countryName)} htmlFor={`country-option-${index}`} key={countryName}>
 							<input
 								className="flag-quiz__option-input"
 								type="radio"
@@ -164,7 +183,7 @@ function FlagQuizGame() {
 								disabled={isAnswerLocked}
 							/>
 							<span className="flag-quiz__option-country">{countryName}</span>
-							<span className="flag-quiz__icon"></span>
+							<span className={renderFeedbackIcon(countryName)}></span>
 						</label>
 					))}
 				</fieldset>
