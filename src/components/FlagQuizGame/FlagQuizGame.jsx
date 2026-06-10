@@ -33,7 +33,7 @@ const totalQuestions = 10;
 const totalSeconds = 10;
 
 // Main component for flag quiz game, game state and logic handling
-function FlagQuizGame() {
+function FlagQuizGame({ onExitGame }) {
 	const [error, setError] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
 	const [currentCountryFlag, setCurrentCountryFlag] = useState(null);
@@ -249,7 +249,10 @@ function FlagQuizGame() {
 							onClick={handleRestartGame}>
 							<i className="flag-quiz__icon flag-quiz__icon--restart lni lni-refresh-circle-1-clockwise"></i>
 						</button>
-						<button className="flag-quiz__menu-button flag-quiz__menu-button--exit" type="button">
+						<button
+							className="flag-quiz__menu-button flag-quiz__menu-button--exit"
+							type="button"
+							onClick={onExitGame}>
 							<i className="flag-quiz__icon flag-quiz__icon--exit lni lni-exit"></i>
 						</button>
 					</div>
