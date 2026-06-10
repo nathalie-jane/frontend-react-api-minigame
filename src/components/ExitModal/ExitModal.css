@@ -1,0 +1,116 @@
+/* ==================================
+    COMPONENT: EXIT MODAL
+
+    Layout and styles for exit 
+    confirmation modal
+===================================== */
+
+/* Modal container */
+.exit-modal {
+	position: fixed;
+	z-index: 50;
+	inset: 0;
+}
+
+/* Modal overlay */
+.exit-modal__overlay {
+	min-height: 100vh;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 12px;
+	background-color: rgba(255, 255, 255, 0.3);
+	backdrop-filter: blur(12px);
+}
+
+/* Exit game confirmation prompt */
+.exit-modal__prompt {
+	width: 100%;
+	max-width: 22rem;
+	padding: 16px;
+	background-color: #ffffff;
+	box-shadow: 0 25px 50px -12px rgba(30, 41, 59, 0.16);
+	border: 1px solid #ebe6e7;
+	border-radius: 14px;
+}
+
+/* Modal header with title and close button */
+.exit-modal__header {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	margin-bottom: 16px;
+}
+
+/* Modal title */
+.exit-modal__title {
+	color: #1e2939;
+	font-size: 1.125rem;
+	font-weight: 600;
+	line-height: 1.6;
+	letter-spacing: 0.04rem;
+}
+
+/* Exit button in modal header */
+.exit-modal__exit-button {
+	width: 2rem;
+	height: 2rem;
+	display: flex;
+	justify-content: flex-end;
+	padding: 0;
+	color: #99a1af;
+	background-color: transparent;
+
+	transition: color 0.2s ease;
+}
+
+/* Exit icon */
+.exit-modal__exit-icon {
+	font-size: 1.5rem;
+}
+
+/* Confirmation message */
+.exit-modal__message {
+	margin-bottom: 16px;
+	color: #4a5565;
+	font-size: 0.875rem;
+	font-weight: 400;
+	line-height: 1.4;
+	letter-spacing: 0.04rem;
+}
+
+/* Action buttons */
+.exit-modal__actions {
+	display: flex;
+	gap: 8px;
+}
+
+/* Shared styles for cancel and confirm buttons */
+.exit-modal__button {
+	width: 100%;
+	min-height: 2.5rem;
+	flex-grow: 1;
+	padding-block: 10px;
+	border-radius: 10px;
+	font-size: 0.875rem;
+	font-weight: 600;
+	line-height: 1.4;
+
+	transition:
+		color 0.2s ease,
+		background-color 0.2s ease;
+}
+
+/* Cancel button */
+.exit-modal__button--primary {
+	color: #1e2939;
+	background-color: #ebe6e7;
+}
+
+/* Confirm exit button */
+.exit-modal__button--secondary {
+	color: #ffffff;
+	background-color: #e7000b;
+}

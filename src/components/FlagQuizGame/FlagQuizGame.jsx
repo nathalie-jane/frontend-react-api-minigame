@@ -8,6 +8,7 @@
 import { useEffect, useState } from "react";
 import { fetchCountriesData } from "../../services/countriesApi";
 import "./FlagQuizGame.css";
+import ExitModal from "../ExitModal/ExitModal";
 
 // Return a shuffled copy from given array of countries data from API
 const getShuffledCountries = (countries) => {
@@ -45,6 +46,7 @@ function FlagQuizGame({ onExitGame }) {
 	const [currentQuestion, setCurrentQuestion] = useState(1);
 	const [secondsLeft, setSecondsLeft] = useState(totalSeconds);
 	const [isTimerExpired, setIsTimerExpired] = useState(false);
+	const [isExitModalOpen, setIsExitModalOpen] = useState(false);
 
 	// Shuffle countries data and generate flag and answer options for new question
 	const generateNewFlag = (countries) => {
@@ -62,8 +64,10 @@ function FlagQuizGame({ onExitGame }) {
 			})
 			.slice(0, 3);
 
+		// Combine correct answer with three incorrect options
 		const countryAnswerOptions = [correctCountry.name.common, ...incorrectCountries.map((country) => country.name.common)];
 
+		// Update current question and reset answer state
 		setCurrentCountryFlag(correctCountry);
 		setAnswerOptions(getShuffledCountries(countryAnswerOptions));
 		setSelectedAnswer(null);
@@ -106,6 +110,10 @@ function FlagQuizGame({ onExitGame }) {
 			return;
 		}
 
+		if (isExitModalOpen) {
+			return;
+		}
+
 		const timer = setInterval(() => {
 			setSecondsLeft((prev) => {
 				if (prev <= 1) {
@@ -125,7 +133,7 @@ function FlagQuizGame({ onExitGame }) {
 		};
 
 		return clearTimer;
-	}, [isAnswerLocked, isLoading, error]);
+	}, [isAnswerLocked, isLoading, error, isExitModalOpen]);
 
 	// Store selected answer and lock options, update score if answer is correct
 	const handleOptionSelect = (event) => {
@@ -218,6 +226,22 @@ function FlagQuizGame({ onExitGame }) {
 		generateNewFlag(countries);
 	};
 
+	// Open exit confirmation modal
+	const openExitModal = () => {
+		setIsExitModalOpen(true);
+	};
+
+	// Close exit confirmation modal
+	const closeExitModal = () => {
+		setIsExitModalOpen(false);
+	};
+
+	// Confirm exit action and return to start screen
+	const confirmExitGame = () => {
+		setIsExitModalOpen(false);
+		onExitGame();
+	};
+
 	// Log loading state when fetching countries data
 	if (isLoading) {
 		console.log("Loading countries");
@@ -252,7 +276,7 @@ function FlagQuizGame({ onExitGame }) {
 						<button
 							className="flag-quiz__menu-button flag-quiz__menu-button--exit"
 							type="button"
-							onClick={onExitGame}>
+							onClick={openExitModal}>
 							<i className="flag-quiz__icon flag-quiz__icon--exit lni lni-exit"></i>
 						</button>
 					</div>
@@ -293,7 +317,7 @@ function FlagQuizGame({ onExitGame }) {
 								value={countryName}
 								checked={selectedAnswer === countryName}
 								onChange={handleOptionSelect}
-								disabled={isAnswerLocked}
+								disabled={isAnswerLocked || isExitModalOpen}
 							/>
 							<span className="flag-quiz__option-country">{countryName}</span>
 							<span className={renderFeedbackIcon(countryName)}></span>
@@ -323,6 +347,9 @@ function FlagQuizGame({ onExitGame }) {
 					</div>
 				)}
 			</div>
+
+			{/* Exit confirmation modal */}
+			{isExitModalOpen && <ExitModal onCancelExit={closeExitModal} onConfirmExit={confirmExitGame} />}
 		</section>
 	);
 }
