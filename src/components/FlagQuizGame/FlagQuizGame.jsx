@@ -33,11 +33,11 @@ const totalQuestions = 10;
 function FlagQuizGame() {
 	const [error, setError] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
-	const [countries, setCountries] = useState([]);
 	const [currentCountryFlag, setCurrentCountryFlag] = useState(null);
 	const [answerOptions, setAnswerOptions] = useState([]);
 	const [selectedAnswer, setSelectedAnswer] = useState(null);
 	const [isAnswerLocked, setIsAnswerLocked] = useState(false);
+	const [countries, setCountries] = useState([]);
 	const [score, setScore] = useState(0);
 	const [currentQuestion, setCurrentQuestion] = useState(1);
 
@@ -152,6 +152,17 @@ function FlagQuizGame() {
 		return className;
 	};
 
+	// Resets game state to initial values and generates new flag for first question
+	const handleRestartGame = () => {
+		setScore(0);
+		setCurrentQuestion(1);
+		generateNewFlag(countries);
+		setSelectedAnswer(null);
+		setIsAnswerLocked(false);
+
+		generateNewFlag(countries);
+	};
+
 	// Generates new flag and answer options for next question or ends game if current question is the last one
 	const handleNextFlag = () => {
 		if (currentQuestion === totalQuestions) {
@@ -193,7 +204,10 @@ function FlagQuizGame() {
 					</div>
 					{/* Menu action buttons */}
 					<div className="flag-quiz__menu-actions">
-						<button className="flag-quiz__menu-button flag-quiz__menu-button--restart" type="button">
+						<button
+							className="flag-quiz__menu-button flag-quiz__menu-button--restart"
+							type="button"
+							onClick={handleRestartGame}>
 							<i className="flag-quiz__icon flag-quiz__icon--restart lni lni-refresh-circle-1-clockwise"></i>
 						</button>
 						<button className="flag-quiz__menu-button flag-quiz__menu-button--exit" type="button">
