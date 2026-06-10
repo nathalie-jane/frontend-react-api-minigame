@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { fetchCountriesData } from "../../services/countriesApi";
 import "./FlagQuizGame.css";
 
-// Returns a shuffled copy from given array of countries data from API
+// Return a shuffled copy from given array of countries data from API
 const getShuffledCountries = (countries) => {
 	const shuffledCountries = [...countries];
 
@@ -29,7 +29,10 @@ const getShuffledCountries = (countries) => {
 // Total number of questions in the game
 const totalQuestions = 10;
 
-// Main component for flag quiz game, handles game state and logic
+// Total time in seconds for each question
+const totalSeconds = 10;
+
+// Main component for flag quiz game, game state and logic handling
 function FlagQuizGame() {
 	const [error, setError] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
@@ -40,13 +43,15 @@ function FlagQuizGame() {
 	const [countries, setCountries] = useState([]);
 	const [score, setScore] = useState(0);
 	const [currentQuestion, setCurrentQuestion] = useState(1);
+	const [secondsLeft, setSecondsLeft] = useState(totalSeconds);
+	const [isTimerExpired, setIsTimerExpired] = useState(false);
 
-	// Shuffles countries data and generates flag and answer options for new question
+	// Shuffle countries data and generate flag and answer options for new question
 	const generateNewFlag = (countries) => {
 		const shuffledCountries = getShuffledCountries(countries);
 		const correctCountry = shuffledCountries[0];
 
-		// Filters out 1 correct country and selects 3 random incorrect countries for answer options
+		// Filter out 1 correct country and select 3 random incorrect countries for answer options
 		const incorrectCountries = shuffledCountries
 			.filter((country) => {
 				if (country.name.common !== correctCountry.name.common) {
@@ -63,9 +68,11 @@ function FlagQuizGame() {
 		setAnswerOptions(getShuffledCountries(countryAnswerOptions));
 		setSelectedAnswer(null);
 		setIsAnswerLocked(false);
+		setSecondsLeft(totalSeconds);
+		setIsTimerExpired(false);
 	};
 
-	// Fetches countries data when component renders and initializes game state, handles errors and loading state
+	// Fetch countries data when component renders and initialize game state, handle errors and loading state
 	useEffect(() => {
 		async function getCountries() {
 			try {
@@ -89,7 +96,38 @@ function FlagQuizGame() {
 		getCountries();
 	}, []);
 
-	// Stores selected answer and locks options, updates score if answer is correct
+	// Run countdown timer for current question
+	useEffect(() => {
+		if (isLoading || error) {
+			return;
+		}
+
+		if (isAnswerLocked) {
+			return;
+		}
+
+		const timer = setInterval(() => {
+			setSecondsLeft((prev) => {
+				if (prev <= 1) {
+					setIsAnswerLocked(true);
+					setIsTimerExpired(true);
+
+					return 0;
+				} else {
+					const updatedSeconds = prev - 1;
+					return updatedSeconds;
+				}
+			});
+		}, 1000);
+
+		const clearTimer = () => {
+			clearInterval(timer);
+		};
+
+		return clearTimer;
+	}, [isAnswerLocked, isLoading, error]);
+
+	// Store selected answer and lock options, update score if answer is correct
 	const handleOptionSelect = (event) => {
 		const answer = event.target.value;
 
@@ -97,24 +135,27 @@ function FlagQuizGame() {
 		setIsAnswerLocked(true);
 
 		if (answer === correctAnswer) {
-			setScore((previousScore) => {
-				const updatedScore = previousScore + 1;
+			setScore((prev) => {
+				const updatedScore = prev + 1;
 
 				return updatedScore;
 			});
 		}
 	};
 
-	// Gets correct country name for current question
+	// Get correct country name for current question
 	const correctAnswer = currentCountryFlag ? currentCountryFlag.name.common : "";
 
-	// Checks if selected answer is correct
+	// Check if selected answer is correct
 	const isCorrectAnswer = selectedAnswer === correctAnswer;
 
-	// Checks if current question is the last one in the game
+	// Check if current question is the last one in the game
 	const isLastQuestion = currentQuestion === totalQuestions;
 
-	// Creates option states based on user selection
+	// Convert remaining seconds into progress bar percentage
+	const progressBarCountdown = (secondsLeft / totalSeconds) * 100;
+
+	// Create option states based on user selection
 	const renderOptionStates = (countryName) => {
 		let className = "flag-quiz__option";
 
@@ -133,7 +174,7 @@ function FlagQuizGame() {
 		return className;
 	};
 
-	// Creates feedback icons based on user selection
+	// Create feedback icons based on user selection
 	const renderFeedbackIcon = (countryName) => {
 		let className = "flag-quiz__icon";
 
@@ -152,18 +193,16 @@ function FlagQuizGame() {
 		return className;
 	};
 
-	// Resets game state to initial values and generates new flag for first question
+	// Reset game state to initial values and generate new flag for first question
 	const handleRestartGame = () => {
 		setScore(0);
 		setCurrentQuestion(1);
 		generateNewFlag(countries);
 		setSelectedAnswer(null);
 		setIsAnswerLocked(false);
-
-		generateNewFlag(countries);
 	};
 
-	// Generates new flag and answer options for next question or ends game if current question is the last one
+	// Generate new flag and answer options for next question or end game if current question is the last one
 	const handleNextFlag = () => {
 		if (currentQuestion === totalQuestions) {
 			console.log(`Game Over\nTotal score: ${score} / ${totalQuestions}`);
@@ -179,12 +218,12 @@ function FlagQuizGame() {
 		generateNewFlag(countries);
 	};
 
-	// Logs loading state when fetching countries data
+	// Log loading state when fetching countries data
 	if (isLoading) {
 		console.log("Loading countries");
 	}
 
-	// Logs error if fetching countries data fails
+	// Log error if fetching countries data fails
 	if (error) {
 		console.error("Error fetching countries data:", error);
 	}
@@ -219,12 +258,14 @@ function FlagQuizGame() {
 				{/* Timer indicator */}
 				<div className="flag-quiz__timer">
 					<i className="flag-quiz__icon flag-quiz__icon--timer lni lni-stopwatch"></i>
-					<p className="flag-quiz__timer-count"></p>
+					<p className="flag-quiz__timer-count">{secondsLeft} s</p>
 				</div>
 
 				{/* Progress bar */}
 				<div className="flag-quiz__progress">
-					<div className="flag-quiz__progress-bar"></div>
+					<div className="flag-quiz__progress-inner">
+						<div className="flag-quiz__progress-bar" style={{ width: `${progressBarCountdown}%` }}></div>
+					</div>
 				</div>
 
 				{/* Main content area with question and flag */}
@@ -258,13 +299,19 @@ function FlagQuizGame() {
 				</fieldset>
 
 				{/* Feedback and action button */}
-				{selectedAnswer && (
+				{(selectedAnswer || isTimerExpired) && (
 					<div className="flag-quiz__feedback">
 						<p
 							className={`flag-quiz__feedback-text ${
-								isCorrectAnswer ? "flag-quiz__feedback-text--correct" : "flag-quiz__feedback-text--incorrect"
+								isCorrectAnswer && !isTimerExpired
+									? "flag-quiz__feedback-text--correct"
+									: "flag-quiz__feedback-text--incorrect"
 							}`}>
-							{isCorrectAnswer ? "Correct!" : `Wrong! The correct answer is ${correctAnswer}`}
+							{isTimerExpired
+								? `Time's up! The correct answer is ${correctAnswer}`
+								: isCorrectAnswer
+									? "Correct!"
+									: `Wrong! The correct answer is ${correctAnswer}`}
 						</p>
 						<button className="flag-quiz__button" type="button" onClick={handleNextFlag}>
 							{isLastQuestion ? "See Results" : "Next Flag"}
