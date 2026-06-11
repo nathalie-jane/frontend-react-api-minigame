@@ -1,0 +1,130 @@
+/* ==================================
+    COMPONENT: GAME RESULT
+
+    Layout and styles for game result
+    screen of the flag quiz game
+===================================== */
+
+/* Result card container */
+.game-result__card {
+	width: 100%;
+	max-width: 28rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 24px;
+	background-color: #ffffff;
+	border-radius: 16px;
+	box-shadow: 0 25px 50px -12px rgba(30, 41, 59, 0.16);
+	text-align: center;
+}
+
+/* Trophy badge container */
+.game-result__badge {
+	height: 4rem;
+	width: 4rem;
+	margin-inline: auto;
+	margin-bottom: 16px;
+}
+
+/* Trophy badge icon */
+.game-result__badge-trophy {
+	display: inline-flex;
+	color: #f0b100;
+	font-size: 4rem;
+}
+
+/* Result title */
+.game-result__title {
+	margin-bottom: 10px;
+	color: #1e2939;
+	font-size: 1.5rem;
+	font-weight: 600;
+	line-height: 1.3;
+	letter-spacing: 0.05rem;
+}
+
+/* Game score display */
+.game-result__score {
+	margin-bottom: 28px;
+	font-size: 2.25rem;
+	font-weight: 400;
+	line-height: 1.2;
+	letter-spacing: 0.03rem;
+}
+
+/* Final game score */
+.game-result__score-value {
+	color: #4f39f6;
+}
+
+/* Game score divider */
+.game-result__score-divider {
+	color: #99a1af;
+}
+
+/* Total number of questions */
+.game-result__score-total {
+	color: #4a5565;
+}
+
+/* Shared button styles */
+.game-result__button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 600;
+}
+
+/* Primary action button (Play Again) */
+.game-result__button--primary {
+	width: 100%;
+	max-width: 10rem;
+	gap: 12px;
+	margin-bottom: 16px;
+	padding-block: 12px;
+	border-radius: 14px;
+	color: #ffffff;
+	background-color: #4f39f6;
+	font-size: 1rem;
+	line-height: 1.5;
+	letter-spacing: 0.04rem;
+
+	transition:
+		color 0.2s ease,
+		background-color 0.2s ease;
+}
+
+/* Shared icon styles */
+.game-result__icon {
+	display: inline-flex;
+	align-items: center;
+}
+
+/* Replay button icon */
+.game-result__icon--play {
+	width: 1.25rem;
+	height: 1.25rem;
+	font-size: 1.25rem;
+}
+
+/* Secondary action button (Back to Start) */
+.game-result__button--secondary {
+	margin-inline: auto;
+	gap: 4px;
+	padding: 0;
+	background-color: transparent;
+	color: #4a5565;
+	font-size: 0.875rem;
+	line-height: 1.4;
+	letter-spacing: 0.03rem;
+
+	transition: color 0.2s ease;
+}
+
+/* Exit icon */
+.game-result__icon--exit {
+	width: 1.125rem;
+	height: 1.125rem;
+	font-size: 1.125rem;
+}

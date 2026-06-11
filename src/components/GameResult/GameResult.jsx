@@ -15,8 +15,8 @@ function GameResult({ score, totalQuestions, onPlayAgain, onBackToStart }) {
 			{/* Result card container */}
 			<div className="game-result__card">
 				{/* Trophy icon */}
-				<div className="game-result__icon">
-					<i className="game-result__icon-trophy lni lni-trophy-1"></i>
+				<div className="game-result__badge">
+					<i className="game-result__badge-trophy lni lni-trophy-1"></i>
 				</div>
 
 				{/* Result heading */}
