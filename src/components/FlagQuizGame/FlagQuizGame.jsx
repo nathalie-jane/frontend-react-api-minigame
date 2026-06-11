@@ -77,24 +77,26 @@ function FlagQuizGame({ onExitGame, onGameResults }) {
 	};
 
 	// Fetch countries data when component renders and initialize game state, handle errors and loading state
+	// Fetch countries data when component renders and initialize game state
 	useEffect(() => {
 		async function getCountries() {
-			try {
-				const data = await fetchCountriesData();
+			const data = await fetchCountriesData();
 
-				setCountries(data);
-				generateNewFlag(data);
-				setError(null);
-			} catch (error) {
-				setError(error.message);
+			if (data.length === 0) {
+				setError("Could not fetch countries data");
 				setCountries([]);
 				setCurrentCountryFlag(null);
 				setAnswerOptions([]);
 				setSelectedAnswer(null);
 				setIsAnswerLocked(false);
-			} finally {
 				setIsLoading(false);
+				return;
 			}
+
+			setCountries(data);
+			generateNewFlag(data);
+			setError(null);
+			setIsLoading(false);
 		}
 
 		getCountries();
@@ -242,14 +244,22 @@ function FlagQuizGame({ onExitGame, onGameResults }) {
 		onExitGame();
 	};
 
-	// Log loading state when fetching countries data
+	// Display loading state while fetching countries data
 	if (isLoading) {
-		console.log("Loading countries");
+		return (
+			<main className="flag-quiz">
+				<p className="flag-quiz__loading">Loading...</p>
+			</main>
+		);
 	}
 
-	// Log error if fetching countries data fails
+	// Display error message if there is an error fetching countries data
 	if (error) {
-		console.error("Error fetching countries data:", error);
+		return (
+			<main className="flag-quiz">
+				<p className="flag-quiz__error">{error}</p>
+			</main>
+		);
 	}
 
 	return (
