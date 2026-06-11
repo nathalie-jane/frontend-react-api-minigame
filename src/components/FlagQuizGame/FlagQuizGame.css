@@ -8,8 +8,8 @@
 /* Quiz card container */
 .flag-quiz__card {
 	width: 100%;
-	max-width: 28rem;
-	margin: 0 auto;
+	max-width: 22rem;
+	margin-inline: auto;
 	overflow-x: hidden;
 	display: flex;
 	flex-direction: column;
@@ -41,7 +41,7 @@
 .flag-quiz__status {
 	padding: 4px 8px;
 	border-radius: 999px;
-	font-size: 0.875rem;
+	font-size: clamp(0.875rem, 0.839rem + 0.179vw, 1rem);
 	line-height: 1.3;
 	letter-spacing: 0.03rem;
 }
@@ -92,7 +92,7 @@
 /* Restart and exit icons */
 .flag-quiz__icon--restart,
 .flag-quiz__icon--exit {
-	font-size: 1.375rem;
+	font-size: clamp(1.375rem, 1.339rem + 0.179vw, 1.5rem);
 }
 
 /* Timer container */
@@ -108,13 +108,13 @@
 /* Timer icon */
 .flag-quiz__icon--timer {
 	color: #364153;
-	font-size: 1.375rem;
+	font-size: clamp(1.375rem, 1.304rem + 0.357vw, 1.625rem);
 }
 
 /* Timer count text */
 .flag-quiz__timer-count {
 	color: #364153;
-	font-size: 1.125rem;
+	font-size: clamp(1.125rem, 1.054rem + 0.357vw, 1.375rem);
 	font-weight: 600;
 	line-height: 1.6;
 }
@@ -154,7 +154,7 @@
 .flag-quiz__question {
 	padding-inline: 8px;
 	color: #1e2939;
-	font-size: 0.875rem;
+	font-size: clamp(0.875rem, 0.768rem + 0.536vw, 1.25rem);
 	font-weight: 600;
 	line-height: 1.3;
 	letter-spacing: 0.04rem;
@@ -230,7 +230,7 @@
 .flag-quiz__option-country {
 	flex: 1;
 	color: #1e2939;
-	font-size: 0.75rem;
+	font-size: clamp(0.75rem, 0.714rem + 0.179vw, 0.875rem);
 	font-weight: 600;
 	line-height: 1.3;
 	letter-spacing: 0.03rem;
@@ -242,7 +242,7 @@
 	width: 1rem;
 	height: 1rem;
 	flex-shrink: 0;
-	font-size: 1.125rem;
+	font-size: clamp(1.125rem, 1.054rem + 0.357vw, 1.375rem);
 }
 
 /* Correct answer icon */
@@ -269,7 +269,7 @@
 	border-radius: 10px;
 	overflow-wrap: break-word;
 	text-align: center;
-	font-size: 0.75rem;
+	font-size: clamp(0.75rem, 0.679rem + 0.357vw, 1rem);
 	font-weight: 600;
 	line-height: 1.6;
 	letter-spacing: 0.04rem;
@@ -300,7 +300,7 @@
 	border-radius: 14px;
 	background-color: #4f39f6;
 	color: #ffffff;
-	font-size: 1rem;
+	font-size: clamp(1rem, 0.964rem + 0.179vw, 1.125rem);
 	font-weight: 600;
 	line-height: 1.5;
 	letter-spacing: 0.04rem;
@@ -317,4 +317,167 @@
 	width: 1.5rem;
 	height: 1.5rem;
 	font-size: clamp(1.5rem, 1.411rem + 0.446vw, 1.625rem);
+}
+
+/* Responsive adjustments for tablet */
+@media screen and (min-width: 48rem) {
+	.flag-quiz__card {
+		max-width: 25rem;
+		padding: 16px 32px;
+		border-radius: 24px;
+	}
+
+	.flag-quiz__header {
+		padding-top: 6px;
+		margin-bottom: 20px;
+	}
+
+	.flag-quiz__stats {
+		gap: 12px;
+	}
+
+	.flag-quiz__options {
+		margin-bottom: 24px;
+	}
+
+	.flag-quiz__option {
+		margin-bottom: 12px;
+		padding: 14px;
+		border-radius: 14px;
+	}
+
+	.flag-quiz__feedback {
+		gap: 16px;
+	}
+
+	.flag-quiz__feedback-text {
+		max-width: 16rem;
+		align-self: center;
+		border-radius: 14px;
+	}
+}
+
+/* Responsive adjustments for desktop */
+@media screen and (min-width: 75rem) {
+	.flag-quiz__card {
+		max-width: 36rem;
+	}
+
+	.flag-quiz__header {
+		align-items: center;
+		margin-bottom: 32px;
+	}
+
+	.flag-quiz__status {
+		padding: 8px 12px;
+		font-size: 1rem;
+		line-height: 1.5;
+		letter-spacing: 0.04rem;
+	}
+
+	.flag-quiz__menu-button {
+		width: 2rem;
+		height: 2rem;
+		padding: 8px;
+
+		transition: color 0.2s ease;
+	}
+
+	.flag-quiz__icon--restart,
+	.flag-quiz__icon--exit {
+		width: 2rem;
+		height: 2rem;
+		font-size: 1.5rem;
+	}
+
+	.flag-quiz__menu-button--restart {
+		transform: translateY(-8px);
+	}
+
+	/* Hover effect for restart button */
+	.flag-quiz__menu-button--restart:hover {
+		color: #1e2939;
+	}
+
+	/* Hover effect for exit button */
+	.flag-quiz__menu-button--exit:hover {
+		color: #9f0712;
+	}
+
+	.flag-quiz__progress {
+		margin-bottom: 24px;
+	}
+
+	.flag-quiz__progress-inner {
+		height: 0.375rem;
+	}
+
+	.flag-quiz__icon--timer {
+		font-size: 1.625rem;
+	}
+
+	.flag-quiz__timer-count {
+		font-size: 1.375rem;
+		line-height: 1.3;
+	}
+
+	.flag-quiz__content {
+		margin-bottom: 32px;
+		gap: 16px;
+	}
+
+	.flag-quiz__flag-image {
+		max-height: 14rem;
+	}
+
+	.flag-quiz__question {
+		font-size: 1.25rem;
+		letter-spacing: 0.05rem;
+	}
+
+	.flag-quiz__options {
+		margin-bottom: 32px;
+	}
+
+	.flag-quiz__option {
+		gap: 12px;
+		padding: 16px;
+	}
+
+	.flag-quiz__option-input {
+		width: 1.125rem;
+		height: 1.125rem;
+	}
+
+	.flag-quiz__option-country {
+		font-size: 0.875rem;
+	}
+
+	.flag-quiz__icon--correct,
+	.flag-quiz__icon--incorrect {
+		width: 1.375rem;
+		height: 1.375rem;
+		font-size: 1.375rem;
+	}
+
+	.flag-quiz__feedback {
+		gap: 24px;
+	}
+
+	.flag-quiz__feedback-text {
+		padding-inline: 16px;
+		font-size: 1rem;
+		letter-spacing: 0.05rem;
+	}
+
+	.flag-quiz__button {
+		max-width: 12rem;
+		font-size: 1.125rem;
+		line-height: 1.6;
+	}
+
+	/* Hover effect for action button (Next Flag / See Results) */
+	.flag-quiz__button:hover {
+		background-color: #432dd7;
+	}
 }

@@ -9,6 +9,8 @@
 .game-result__card {
 	width: 100%;
 	max-width: 28rem;
+	margin-inline: auto;
+	overflow-x: hidden;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
