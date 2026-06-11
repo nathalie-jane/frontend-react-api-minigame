@@ -56,6 +56,16 @@ button {
 	padding-inline: 16px;
 }
 
+/* Shared layout for start, game and result screen */
+.start-game,
+.flag-quiz,
+.game-result {
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 /* Responsive adjustments for tablet and larger screens */
 @media screen and (min-width: 48rem) {
 	.site-main {
