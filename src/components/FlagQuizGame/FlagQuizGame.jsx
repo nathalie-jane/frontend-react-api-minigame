@@ -34,7 +34,7 @@ const totalQuestions = 10;
 const totalSeconds = 10;
 
 // Main component for flag quiz game, game state and logic handling
-function FlagQuizGame({ onExitGame }) {
+function FlagQuizGame({ onExitGame, onGameResults }) {
 	const [error, setError] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
 	const [currentCountryFlag, setCurrentCountryFlag] = useState(null);
@@ -213,7 +213,7 @@ function FlagQuizGame({ onExitGame }) {
 	// Generate new flag and answer options for next question or end game if current question is the last one
 	const handleNextFlag = () => {
 		if (currentQuestion === totalQuestions) {
-			console.log(`Game Over\nTotal score: ${score} / ${totalQuestions}`);
+			onGameResults(score, totalQuestions);
 			return;
 		} else {
 			setCurrentQuestion((currentQuestionNumber) => {
