@@ -8,7 +8,7 @@
 /* Result card container */
 .game-result__card {
 	width: 100%;
-	max-width: 28rem;
+	max-width: 20rem;
 	margin-inline: auto;
 	overflow-x: hidden;
 	display: flex;
@@ -33,14 +33,14 @@
 .game-result__badge-trophy {
 	display: inline-flex;
 	color: #f0b100;
-	font-size: 4rem;
+	font-size: clamp(4rem, 3.286rem + 3.571vw, 5rem);
 }
 
 /* Result title */
 .game-result__title {
 	margin-bottom: 10px;
 	color: #1e2939;
-	font-size: 1.5rem;
+	font-size: clamp(1.5rem, 1.321rem + 0.893vw, 1.75rem);
 	font-weight: 600;
 	line-height: 1.3;
 	letter-spacing: 0.05rem;
@@ -88,7 +88,7 @@
 	border-radius: 14px;
 	color: #ffffff;
 	background-color: #4f39f6;
-	font-size: 1rem;
+	font-size: clamp(1rem, 0.911rem + 0.446vw, 1.125rem);
 	line-height: 1.5;
 	letter-spacing: 0.04rem;
 
@@ -107,7 +107,7 @@
 .game-result__icon--play {
 	width: 1.25rem;
 	height: 1.25rem;
-	font-size: 1.25rem;
+	font-size: clamp(1.25rem, 1.161rem + 0.446vw, 1.375rem);
 }
 
 /* Secondary action button (Back to Start) */
@@ -117,7 +117,7 @@
 	padding: 0;
 	background-color: transparent;
 	color: #4a5565;
-	font-size: 0.875rem;
+	font-size: clamp(0.875rem, 0.83rem + 0.225vw, 0.938rem);
 	line-height: 1.4;
 	letter-spacing: 0.03rem;
 
@@ -128,5 +128,69 @@
 .game-result__icon--exit {
 	width: 1.125rem;
 	height: 1.125rem;
-	font-size: 1.125rem;
+	font-size: clamp(1.125rem, 0.857rem + 1.339vw, 1.5rem);
+}
+
+/* Responsive adjustments for tablet */
+@media screen and (min-width: 48rem) {
+	.game-result__card {
+		border-radius: 24px;
+	}
+
+	.game-result__badge {
+		width: 5rem;
+		height: 5rem;
+	}
+
+	.game-result__badge-trophy {
+		font-size: 5rem;
+	}
+
+	.game-result__title {
+		font-size: 1.75rem;
+	}
+
+	.game-result__button--primary {
+		max-width: 11rem;
+		margin-bottom: 20px;
+		font-size: 1.125rem;
+	}
+
+	.game-result__icon--play {
+		width: 1.375rem;
+		height: 1.375rem;
+		font-size: 1.375rem;
+	}
+
+	.game-result__button--secondary {
+		gap: 12px;
+		font-size: 0.938rem;
+		line-height: 1.5;
+	}
+
+	.game-result__icon--exit {
+		font-size: 1.5rem;
+	}
+}
+
+/* Responsive adjustments for desktop */
+@media screen and (min-width: 75rem) {
+	.game-result__card {
+		max-width: 24rem;
+		padding-block: 32px;
+	}
+
+	.game-result__score {
+		margin-bottom: 32px;
+	}
+
+	/* Hover effect for Play Again button */
+	.game-result__button--primary:hover {
+		background-color: #432dd7;
+	}
+
+	/* Hover effect for Back to Start button */
+	.game-result__button--secondary:hover {
+		color: #1e2939;
+	}
 }
