@@ -46,9 +46,11 @@ function StartGame({ onStartGame }) {
 					<i className="start-game__icon start-game__icon--play lni lni-play"></i>
 					Start Game
 				</button>
-				<button className="start-game__button start-game__button--secondary" type="button">
+
+				{/* Exit button to be implemented once login/registration is added */}
+				{/* 	<button className="start-game__button start-game__button--secondary" type="button">
 					<i className="start-game__icon start-game__icon--exit lni lni-exit"></i>Exit
-				</button>
+				</button> */}
 			</div>
 		</section>
 	);

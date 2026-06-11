@@ -36,7 +36,7 @@ function App() {
 
 	// Start new game from results screen
 	const handlePlayAgain = () => {
-		setGameScreen("start");
+		setGameScreen("game");
 	};
 
 	return (
