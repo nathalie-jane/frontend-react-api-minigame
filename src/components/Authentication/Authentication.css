@@ -1,0 +1,160 @@
+.account-forms__card {
+	width: 100%;
+	max-width: 20rem;
+	margin-inline: auto;
+	overflow-x: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 16px;
+	background-color: #ffffff;
+	border-radius: 16px;
+	box-shadow: 0 25px 50px -12px rgba(30, 41, 59, 0.16);
+}
+
+.account-forms__header {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	margin-bottom: 24px;
+	text-align: center;
+}
+
+.account-forms__title {
+	color: #1e2939;
+	font-size: 1.5rem;
+	font-weight: 600;
+	line-height: 1.3;
+	letter-spacing: 0.05rem;
+}
+
+.account-forms__subtitle {
+	color: #4a5565;
+	font-size: 0.875rem;
+	font-weight: 400;
+	line-height: 1.4;
+	letter-spacing: 0.03rem;
+}
+
+.account-forms__toggle-form {
+	width: 100%;
+	display: flex;
+	gap: 8px;
+	margin-bottom: 16px;
+	padding: 4px;
+	border-radius: 14px;
+	background-color: #f6f3f4;
+}
+
+.account-forms__toggle-button {
+	width: 100%;
+	flex-grow: 1;
+	padding-block: 8px;
+	border-radius: 10px;
+	color: #4a5565;
+	font-size: 0.875rem;
+	font-weight: 600;
+	line-height: 1.4;
+	letter-spacing: 0.04rem;
+
+	transition:
+		background-color 0.2s ease,
+		color 0.2s ease,
+		box-shadow 0.2s ease;
+}
+
+.account-forms__toggle-button--active {
+	background-color: #4f39f6;
+	box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.3);
+	color: #ffffff;
+}
+
+.account-forms__form {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.account-forms__field {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	margin-bottom: 12px;
+}
+
+.account-forms__field:last-of-type {
+	margin-bottom: 24px;
+}
+
+.account-forms__label {
+	color: #364153;
+	font-size: 0.75rem;
+	font-weight: 500;
+	line-height: 1.3;
+	letter-spacing: 0.04rem;
+}
+
+.account-forms__input-group {
+	position: relative;
+}
+
+.account-forms__input-icon {
+	width: 1rem;
+	height: 1rem;
+	position: absolute;
+	left: 0.5rem;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #99a1af;
+	font-size: 1rem;
+}
+
+.account-forms__input {
+	width: 100%;
+	padding-block: 8px;
+	padding-inline: 32px 12px;
+	border-radius: 14px;
+	border: 2px solid #ebe6e7;
+	outline: none;
+	color: #0f172a;
+	font-size: 0.875rem;
+	font-weight: 400;
+	line-height: 1.4;
+	letter-spacing: 0.03rem;
+
+	transition: border-color 0.2s ease;
+}
+
+.account-forms__input::placeholder {
+	color: #94a3b8;
+}
+
+.account-forms__input:focus {
+	border-color: #615fff;
+}
+
+.account-forms__input:focus::placeholder {
+	color: transparent;
+}
+
+.account-forms__button {
+	width: 100%;
+	max-width: 8rem;
+	justify-content: center;
+	align-self: center;
+	margin-bottom: 4px;
+	padding-block: 12px;
+	border-radius: 14px;
+	background-color: #4f39f6;
+	color: #ffffff;
+	font-size: 1rem;
+	font-weight: 600;
+	line-height: 1.5;
+	letter-spacing: 0.04rem;
+	box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.3);
+
+	transition:
+		background-color 0.2s ease,
+		color 0.2s ease;
+}

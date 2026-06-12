@@ -57,6 +57,7 @@ button {
 }
 
 /* Shared layout for start, game and result screen */
+.account-forms,
 .start-game,
 .flag-quiz,
 .game-result {
