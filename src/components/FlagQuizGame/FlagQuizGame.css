@@ -304,6 +304,7 @@
 	font-weight: 600;
 	line-height: 1.5;
 	letter-spacing: 0.04rem;
+	box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.3);
 
 	transition:
 		background-color 0.2s ease,

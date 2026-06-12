@@ -2,20 +2,27 @@
 	APP
 
 	- Main component for flag quiz game
-	- Handles navigation between start, 
-	  game and results screen
+	- Handles navigation between 
+	  authentication, start, game and 
+	  results screen
 ======================================== */
 
 import { useState } from "react";
 
+import AccountForms from "./components/Authentication/AccountForms";
 import StartGame from "./components/StartGame/StartGame";
 import FlagQuizGame from "./components/FlagQuizGame/FlagQuizGame";
 import GameResult from "./components/GameResult/GameResult";
 
 function App() {
-	const [gameScreen, setGameScreen] = useState("start");
+	const [gameScreen, setGameScreen] = useState("account");
 	const [score, setScore] = useState(null);
 	const [totalQuestions, setTotalQuestions] = useState(10);
+
+	// Handle successful login and navigate to start screen
+	const handleLoginSuccess = () => {
+		setGameScreen("start");
+	};
 
 	// Start flag quiz game from start screen
 	const handleStartGame = () => {
@@ -41,6 +48,9 @@ function App() {
 
 	return (
 		<main className="site-main">
+			{/* Display account login and sign-up form */}
+			{gameScreen === "account" && <AccountForms onLogin={handleLoginSuccess} />}
+
 			{/* Display start screen */}
 			{gameScreen === "start" && <StartGame onStartGame={handleStartGame} />}
 
