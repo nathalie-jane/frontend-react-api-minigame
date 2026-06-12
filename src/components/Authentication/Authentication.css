@@ -33,7 +33,7 @@
 /* Title for login and sign-up forms */
 .account-forms__title {
 	color: #1e2939;
-	font-size: 1.5rem;
+	font-size: clamp(1.5rem, 0.964rem + 2.679vw, 2.25rem);
 	font-weight: 600;
 	line-height: 1.3;
 	letter-spacing: 0.05rem;
@@ -42,7 +42,7 @@
 /* Subtitle for login and sign-up forms */
 .account-forms__subtitle {
 	color: #4a5565;
-	font-size: 0.875rem;
+	font-size: clamp(0.875rem, 0.786rem + 0.446vw, 1rem);
 	font-weight: 400;
 	line-height: 1.4;
 	letter-spacing: 0.03rem;
@@ -66,7 +66,7 @@
 	padding-block: 8px;
 	border-radius: 10px;
 	color: #4a5565;
-	font-size: 0.875rem;
+	font-size: clamp(0.875rem, 0.786rem + 0.446vw, 1rem);
 	font-weight: 600;
 	line-height: 1.4;
 	letter-spacing: 0.04rem;
@@ -108,7 +108,7 @@
 /* Label for form fields */
 .account-forms__label {
 	color: #364153;
-	font-size: 0.75rem;
+	font-size: clamp(0.75rem, 0.661rem + 0.446vw, 0.875rem);
 	font-weight: 500;
 	line-height: 1.3;
 	letter-spacing: 0.04rem;
@@ -128,7 +128,7 @@
 	top: 50%;
 	transform: translateY(-50%);
 	color: #99a1af;
-	font-size: 1rem;
+	font-size: clamp(1rem, 0.732rem + 1.339vw, 1.375rem);
 }
 
 /* Input field for username and password */
@@ -140,7 +140,7 @@
 	border: 2px solid #ebe6e7;
 	outline: none;
 	color: #0f172a;
-	font-size: 0.875rem;
+	font-size: clamp(0.875rem, 0.786rem + 0.446vw, 1rem);
 	font-weight: 400;
 	line-height: 1.4;
 	letter-spacing: 0.03rem;
@@ -172,9 +172,9 @@
 	margin-bottom: 16px;
 	padding: 12px;
 	border-radius: 14px;
-	font-size: 0.75rem;
+	font-size: clamp(0.75rem, 0.661rem + 0.446vw, 0.875rem);
 	font-style: italic;
-	font-weight: 500;
+	font-weight: 400;
 	line-height: 1.4;
 	letter-spacing: 0.04rem;
 }
@@ -202,7 +202,7 @@
 	border-radius: 14px;
 	background-color: #4f39f6;
 	color: #ffffff;
-	font-size: 1rem;
+	font-size: clamp(1rem, 0.911rem + 0.446vw, 1.125rem);
 	font-weight: 600;
 	line-height: 1.5;
 	letter-spacing: 0.04rem;
@@ -217,7 +217,8 @@
 @media screen and (min-width: 48rem) {
 	.account-forms__card {
 		max-width: 25rem;
-		padding-inline: 32px;
+		padding: 24px 32px;
+		border-radius: 24px;
 	}
 
 	.account-forms__header {
@@ -247,7 +248,11 @@
 
 	.account-forms__field {
 		gap: 8px;
-		margin-bottom: 16px;
+		margin-bottom: 24px;
+	}
+
+	.account-forms__field:last-of-type {
+		margin-bottom: 32px;
 	}
 
 	.account-forms__label {
@@ -275,14 +280,29 @@
 		font-size: 0.875rem;
 		line-height: 1.4;
 	}
+
+	.account-forms__button {
+		font-size: 1.125rem;
+		line-height: 1.6;
+	}
 }
 
 /* Responsive adjustments for desktop */
 @media screen and (min-width: 75rem) {
+	.account-forms__card {
+		max-width: 28rem;
+		padding-block: 24px;
+	}
+
 	.account-forms__toggle-button:not(.account-forms__toggle-button--active):hover {
 		color: #1e2939;
 	}
 
+	.account-forms__button {
+		max-width: 10rem;
+	}
+
+	/* Hover effect for Login and Sign-Up button */
 	.account-forms__button:hover {
 		background-color: #432dd7;
 	}

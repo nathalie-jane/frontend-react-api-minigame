@@ -47,7 +47,7 @@
 /* Modal title */
 .exit-modal__title {
 	color: #1e2939;
-	font-size: 1.125rem;
+	font-size: clamp(1.125rem, 0.857rem + 1.339vw, 1.5rem);
 	font-weight: 600;
 	line-height: 1.6;
 	letter-spacing: 0.04rem;
@@ -68,14 +68,14 @@
 
 /* Exit icon */
 .exit-modal__exit-icon {
-	font-size: 1.5rem;
+	font-size: clamp(1.5rem, 1.321rem + 0.893vw, 1.75rem);
 }
 
 /* Confirmation message */
 .exit-modal__message {
 	margin-bottom: 16px;
 	color: #4a5565;
-	font-size: 0.875rem;
+	font-size: clamp(0.875rem, 0.786rem + 0.446vw, 1rem);
 	font-weight: 400;
 	line-height: 1.4;
 	letter-spacing: 0.04rem;
@@ -94,7 +94,7 @@
 	flex-grow: 1;
 	padding-block: 10px;
 	border-radius: 10px;
-	font-size: 0.875rem;
+	font-size: clamp(0.875rem, 0.786rem + 0.446vw, 1rem);
 	font-weight: 600;
 	line-height: 1.4;
 
@@ -113,6 +113,46 @@
 .exit-modal__button--secondary {
 	color: #ffffff;
 	background-color: #e7000b;
+}
+
+/* Responsive adjustments for tablet */
+@media screen and (min-width: 48rem) {
+	.exit-modal__prompt {
+		max-width: 28rem;
+		padding: 32px;
+		border-radius: 16px;
+	}
+
+	.exit-modal__header {
+		margin-bottom: 24px;
+	}
+
+	.exit-modal__title {
+		font-size: 1.5rem;
+		line-height: 1.3;
+		letter-spacing: 0.05rem;
+	}
+
+	.exit-modal__exit-icon {
+		font-size: 1.75rem;
+	}
+
+	.exit-modal__message {
+		margin-bottom: 32px;
+		font-size: 1rem;
+		line-height: 1.5;
+	}
+
+	.exit-modal__actions {
+		gap: 40px;
+	}
+
+	.exit-modal__button {
+		padding: 12px;
+		border-radius: 14px;
+		font-size: 1rem;
+		line-height: 1.5;
+	}
 }
 
 /* Responsive adjustments for desktop */
