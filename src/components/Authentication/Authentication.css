@@ -100,7 +100,7 @@
 	margin-bottom: 12px;
 }
 
-/* Remove bottom margin for last form field */
+/* Add extra spacing  for last form field */
 .account-forms__field:last-of-type {
 	margin-bottom: 24px;
 }
@@ -211,4 +211,79 @@
 	transition:
 		background-color 0.2s ease,
 		color 0.2s ease;
+}
+
+/* Responsive adjustments for tablet */
+@media screen and (min-width: 48rem) {
+	.account-forms__card {
+		max-width: 25rem;
+		padding-inline: 32px;
+	}
+
+	.account-forms__header {
+		gap: 12px;
+		margin-bottom: 32px;
+	}
+
+	.account-forms__title {
+		font-size: 2.25rem;
+		line-height: 1.1;
+	}
+
+	.account-forms__subtitle {
+		font-size: 1rem;
+		line-height: 1.5;
+	}
+
+	.account-forms__toggle-form {
+		margin-bottom: 32px;
+	}
+
+	.account-forms__toggle-button {
+		padding-block: 12px;
+		font-size: 1rem;
+		line-height: 1.5;
+	}
+
+	.account-forms__field {
+		gap: 8px;
+		margin-bottom: 16px;
+	}
+
+	.account-forms__label {
+		font-size: 0.875rem;
+		line-height: 1.4;
+	}
+
+	.account-forms__input-icon {
+		width: 1.375rem;
+		height: 1.375rem;
+		left: 0.75rem;
+		font-size: 1.375rem;
+	}
+
+	.account-forms__input {
+		padding-inline: 40px 16px;
+		padding-block: 12px;
+		font-size: 1rem;
+		line-height: 1.5;
+	}
+
+	.account-forms__feedback {
+		margin-bottom: 24px;
+		padding: 16px;
+		font-size: 0.875rem;
+		line-height: 1.4;
+	}
+}
+
+/* Responsive adjustments for desktop */
+@media screen and (min-width: 75rem) {
+	.account-forms__toggle-button:not(.account-forms__toggle-button--active):hover {
+		color: #1e2939;
+	}
+
+	.account-forms__button:hover {
+		background-color: #432dd7;
+	}
 }
