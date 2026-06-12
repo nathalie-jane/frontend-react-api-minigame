@@ -163,6 +163,34 @@
 	color: transparent;
 }
 
+/* Feedback messages for form validation */
+.account-forms__feedback {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	margin-bottom: 16px;
+	padding: 12px;
+	border-radius: 14px;
+	font-size: 0.75rem;
+	font-style: italic;
+	font-weight: 500;
+	line-height: 1.4;
+	letter-spacing: 0.04rem;
+}
+
+/* Feedback message for successful validation */
+.account-forms__feedback--success {
+	background-color: #f0fdf4;
+	color: #016630;
+}
+
+/* Feedback message for validation errors */
+.account-forms__feedback--error {
+	background-color: #fef2f2;
+	color: #9f0712;
+}
+
 /* Submit button for login and sign-up forms */
 .account-forms__button {
 	width: 100%;

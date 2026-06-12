@@ -5,9 +5,9 @@
 	account forms
 ===================================== */
 
-function FormField({ id, label, type, placeholder, icon }) {
+function FormField({ id, label, type, placeholder, icon, value, onChange, onFocus }) {
 	return (
-		// Label and input group continer
+		// Label and input group container
 		<div className="account-forms__field">
 			<label className="account-forms__label" htmlFor={id}>
 				{label}
@@ -16,7 +16,15 @@ function FormField({ id, label, type, placeholder, icon }) {
 			{/* Wrapper for icon and input field */}
 			<div className="account-forms__input-group">
 				<i className={`account-forms__input-icon ${icon}`}></i>
-				<input className="account-forms__input" id={id} type={type} placeholder={placeholder} required />
+				<input
+					className="account-forms__input"
+					id={id}
+					type={type}
+					placeholder={placeholder}
+					value={value}
+					onChange={onChange}
+					onFocus={onFocus}
+				/>
 			</div>
 		</div>
 	);
