@@ -8,7 +8,7 @@
 
 import "./StartGame.css";
 
-function StartGame({ onStartGame }) {
+function StartGame({ onStartGame, onExitStartGame }) {
 	return (
 		<section className="start-game">
 			{/* Card container for text content and buttons */}
@@ -47,7 +47,7 @@ function StartGame({ onStartGame }) {
 					Start Game
 				</button>
 
-				<button className="start-game__button start-game__button--secondary" type="button">
+				<button className="start-game__button start-game__button--secondary" type="button" onClick={onExitStartGame}>
 					<i className="start-game__icon start-game__icon--exit lni lni-exit"></i>Exit
 				</button>
 			</div>

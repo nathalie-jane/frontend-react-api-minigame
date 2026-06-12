@@ -29,6 +29,11 @@ function App() {
 		setGameScreen("game");
 	};
 
+	// Exit start screen and return to account form screen
+	const handleExitStartGame = () => {
+		setGameScreen("account");
+	};
+
 	// Exit flag quiz game and return to start screen
 	const handleExitGame = () => {
 		setGameScreen("start");
@@ -52,7 +57,7 @@ function App() {
 			{gameScreen === "account" && <AccountForms onLogin={handleLoginSuccess} />}
 
 			{/* Display start screen */}
-			{gameScreen === "start" && <StartGame onStartGame={handleStartGame} />}
+			{gameScreen === "start" && <StartGame onStartGame={handleStartGame} onExitStartGame={handleExitStartGame} />}
 
 			{/* Display flag quiz game */}
 			{gameScreen === "game" && <FlagQuizGame onExitGame={handleExitGame} onGameResults={handleGameResults} />}
